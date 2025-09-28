@@ -18,9 +18,9 @@ class ButtonService:
     def __init__(self):
         # Hardcoded button UIDs - replace with your actual button UIDs
         self.button_uids = [
-            "ABC",  # Replace with actual UID of button 1
-            "DEF",  # Replace with actual UID of button 2
-            "GHI"   # Replace with actual UID of button 3
+            "2dxQ",  # Replace with actual UID of button 1
+            "2dyi",  # Replace with actual UID of button 2
+            "2dy4" # Replace with actual UID of button 3
         ]
         
         # Hardcoded programs to execute - replace with your actual programs
