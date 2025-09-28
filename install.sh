@@ -7,9 +7,9 @@ echo "Installing RGB LED Button Service..."
 echo "Updating package list..."
 sudo apt update
 
-# Install Tinkerforge daemon
-echo "Installing Tinkerforge daemon..."
-sudo apt install -y brickd
+# Install Tinkerforge daemon and MP3 player
+echo "Installing Tinkerforge daemon and MP3 player..."
+sudo apt install -y brickd mpg123
 
 # Start and enable brickd service
 echo "Starting Tinkerforge daemon..."

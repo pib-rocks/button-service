@@ -18,7 +18,12 @@ A Python service for managing 3 Tinkerforge RGB LED buttons on a Raspberry Pi 5 
    pip3 install -r requirements.txt
    ```
 
-2. Install and start the Tinkerforge daemon (brickd):
+2. Install audio player for MP3 support:
+   ```bash
+   sudo apt install mpg123
+   ```
+
+3. Install and start the Tinkerforge daemon (brickd):
    ```bash
    sudo apt update
    sudo apt install brickd
@@ -26,11 +31,11 @@ A Python service for managing 3 Tinkerforge RGB LED buttons on a Raspberry Pi 5 
    sudo systemctl enable brickd
    ```
 
-3. Configure your button UIDs in `button_service.py`:
+4. Configure your button UIDs in `button_service.py`:
    - Replace the hardcoded UIDs in the `button_uids` list with your actual button UIDs
    - Update the `programs` list with the programs you want to execute
 
-4. Make sure your programs are executable:
+5. Make sure your programs are executable:
    ```bash
    chmod +x program1.py program2.py program3.py
    ```
@@ -66,10 +71,15 @@ Edit the `programs` list in `button_service.py`:
 ```python
 self.programs = [
     "program1.py",  # Program for button 1
-    "program2.py",  # Program for button 2
+    "hello.mp3",    # MP3 file for button 2
     "program3.py"   # Program for button 3
 ]
 ```
+
+The service supports different file types:
+- **Python scripts** (`.py`): Executed with `python3`
+- **MP3 files** (`.mp3`): Played with `mpg123`
+- **Other files**: Default to `python3` execution
 
 ### Colors
 You can modify the button colors by changing the color values:

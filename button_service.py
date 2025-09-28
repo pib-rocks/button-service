@@ -26,7 +26,7 @@ class ButtonService:
         # Hardcoded programs to execute - replace with your actual programs
         self.programs = [
             "program1.py",  # Program for button 1
-            "program2.py",  # Program for button 2
+            "hello.mp3",    # MP3 file for button 2
             "program3.py"   # Program for button 3
         ]
         
@@ -112,9 +112,20 @@ class ButtonService:
         print(f"Starting program: {program}")
         
         try:
+            # Determine command based on file extension
+            if program.endswith('.mp3'):
+                # Use mpg123 to play MP3 files
+                cmd = ["mpg123", program]
+            elif program.endswith('.py'):
+                # Use python3 for Python scripts
+                cmd = ["python3", program]
+            else:
+                # Default to python3 for unknown extensions
+                cmd = ["python3", program]
+            
             # Start the program
             process = subprocess.Popen(
-                ["python3", program],
+                cmd,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 cwd="."  # Run in current directory
