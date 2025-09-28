@@ -110,18 +110,33 @@ class ButtonService:
         
         program = self.programs[button_id]
         print(f"Starting program: {program}")
+        print(f"Button {button_id+1} command: {program}")
         
         try:
+            # Parse command and arguments
+            if ' ' in program:
+                # Command has arguments, split them
+                parts = program.split()
+                base_cmd = parts[0]
+                args = parts[1:]
+            else:
+                # Simple command without arguments
+                base_cmd = program
+                args = []
+            
             # Determine command based on file extension
-            if program.endswith('.mp3'):
+            if base_cmd.endswith('.mp3'):
                 # Use mpg123 to play MP3 files
-                cmd = ["mpg123", program]
-            elif program.endswith('.py'):
+                cmd = ["mpg123", base_cmd] + args
+            elif base_cmd.endswith('.py'):
                 # Use python3 for Python scripts
-                cmd = ["python3", program]
+                cmd = ["python3", base_cmd] + args
             else:
                 # Default to python3 for unknown extensions
-                cmd = ["python3", program]
+                cmd = ["python3", base_cmd] + args
+            
+            # Debug output
+            print(f"Executing command: {' '.join(cmd)}")
             
             # Start the program
             process = subprocess.Popen(
