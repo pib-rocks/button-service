@@ -25,9 +25,9 @@ class ButtonService:
         
         # Hardcoded programs to execute - replace with your actual programs
         self.programs = [
-            "program1.py",  # Program for button 1
+            "../depthai_hand_tracker/demo.py -e",  # Program for button 1
             "hello.mp3",    # MP3 file for button 2
-            "program3.py"   # Program for button 3
+            "mehring.mp3"   # MP3 file for button 3
         ]
         
         # Colors (R, G, B) - each value 0-255
