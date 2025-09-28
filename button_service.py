@@ -72,9 +72,6 @@ class ButtonService:
                         lambda state, button_id=i: self.button_callback(button_id, state)
                     )
                     
-                    # Set callback configuration
-                    button.set_button_state_callback_configuration(True)
-                    
                 except Exception as e:
                     print(f"Error initializing button {i+1} (UID: {uid}): {e}")
                     # Remove from button_objects if initialization failed
